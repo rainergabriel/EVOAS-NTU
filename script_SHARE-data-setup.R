@@ -48,6 +48,32 @@ wave7.basics <-
   subset(wave7.basics, select = c(mergeid, country, hhsize, age2017))
 wave7.hh <- subset(wave7.hh, select = c(mergeid, hh017e))
 
+#merging using the static mergeid
 df <- merge(wave7.basics, wave7.hh, by="mergeid")
+
+
+# subset to Switzerland and only retirees ---------------------------------
+
+df$age2017 <- as.character(df$age2017)
+df$age2017 <- as.numeric(df$age2017)
+
+df <- subset(df, 
+             country=="Switzerland" & age2017>=65)
+
+
+# Recodings ---------------------------------------------------------------
+
+levels(df$hh017e)
+rm.dk <- function (x) {sub(pattern="Don't know",x,replacement=NA)}
+rm.refusal <- function (x) {sub(pattern="Refusal",x,replacement=NA)}
+
+
+df$hh017e <- sapply(df$hh017e, rm.dk)
+df$hh017e <- sapply(df$hh017e, rm.refusal)
+
+
+# Save the dataset  -------------------------------------------------------
+
+save(df, file="data_NTU-analyses.Rdata")
 
 
