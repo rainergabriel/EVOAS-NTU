@@ -11,5 +11,4 @@ summary(df$hh017)
 
 #using OECD methodology to calculate equivalized household income 
 
-
-
+head(df)
