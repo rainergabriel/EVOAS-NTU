@@ -34,6 +34,32 @@ wave7.basics <-
     use.missings = TRUE
   )
 
+wave7.weights <-
+  read.spss(
+    file = "/Users/rainer/Dropbox/Documents/Work/ACTIVE/ZHAW/3_Research-Projects/EVOAS-Team/2_Daten und Analysen/Other-Datasets-Raw-Data/SHARE RawData/sharew7_rel7-1-0_ALL_datasets_spss/sharew7_rel7-1-0_gv_weights.sav",
+    to.data.frame = TRUE,
+    reencode = "UTF-8",
+    use.missings = TRUE
+  )
+
+wave7.gen <-
+  read.spss(
+    file = "/Users/rainer/Dropbox/Documents/Work/ACTIVE/ZHAW/3_Research-Projects/EVOAS-Team/2_Daten und Analysen/Other-Datasets-Raw-Data/SHARE RawData/sharew7_rel7-1-0_ALL_datasets_spss/sharew7_rel7-1-0_gv_imputations.sav",
+    to.data.frame = TRUE,
+    reencode = "UTF-8",
+    use.missings = TRUE
+  )
+
+wave7.gen <-
+  read.spss(
+    file = "C:/Users/gabn/Dropbox/Documents/Work/ACTIVE/ZHAW/3_Research-Projects/EVOAS-Team/2_Daten und Analysen/Other-Datasets-Raw-Data/SHARE RawData/sharew7_rel7-1-0_ALL_datasets_spss/sharew7_rel7-1-0_gv_imputations.sav",
+    to.data.frame = TRUE,
+    reencode = "UTF-8",
+    use.missings = TRUE
+  )
+
+
+
 
 
 # Looking at the data -----------------------------------------------------
@@ -70,6 +96,7 @@ rm.refusal <- function (x) {sub(pattern="Refusal",x,replacement=NA)}
 
 df$hh017e <- sapply(df$hh017e, rm.dk)
 df$hh017e <- sapply(df$hh017e, rm.refusal)
+df$hh017e <- as.numeric(df$hh017e)
 
 
 # Save the dataset  -------------------------------------------------------
