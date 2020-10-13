@@ -9,4 +9,7 @@ summary(df$hh017)
 
 #equivalizing the income 
 
+#using OECD methodology to calculate equivalized household income 
+
+
 
